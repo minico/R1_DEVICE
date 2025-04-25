@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion 30
@@ -9,7 +9,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 2
-        versionName "1.0.1"
+        versionName "2.0"
         ndk {
             abiFilter("armeabi-v7a") //控制so库生成兼容的平台
         }
@@ -113,9 +113,4 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation group: 'com.android.volley', name: 'volley', version: '1.1.1'
     implementation group: 'com.kaolafm.sdk', name: 'opensdk', version: '1.4.1', ext: 'pom'
-
-
-    implementation project(path: ':KMusic')
-
-
 }
