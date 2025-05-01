@@ -172,8 +172,8 @@ public final class UserPerferenceUtil {
     }
 
     public static boolean getDeviceBindState(Context context) {
-        return SharedPreferencesHelper.getInstance(context, SP_NAME).getBooleanValue(DEVICE_BIND_STATE, false);
-//        return true;
+        //return SharedPreferencesHelper.getInstance(context, SP_NAME).getBooleanValue(DEVICE_BIND_STATE, false);
+        return true;
     }
 
     public static String getDeviceId(Context context) {
