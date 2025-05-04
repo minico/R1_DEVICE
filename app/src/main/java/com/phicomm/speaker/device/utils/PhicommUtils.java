@@ -83,12 +83,13 @@ public class PhicommUtils {
 
 
     public static String asrByWord(String word) throws IOException {
-        String url = "http://106.14.226.237:8080/service/iss-test?platform=&screen=&text=";
-        String url2 = "&appkey=3dcddlnx7ddlb2xatjxtbtxha6xah7iogajzkqie&scenario=child&filterName=search&ver=3.0&udid=d1cee3ae6ff46&returnType=json&appsig=A6702357B7904B43907E7803665FBD5FE08C57A5&appver=1.0.1&city=%E6%B7%B1%E5%9C%B3&history=&time=&voiceid=8AAAD808EDF04697AF3C74C22DC4CF0E&gps=&method=iss.getTalk&dpi=&viewId=";
-
-        Response response = HttpUtils.getInstance().getSync(url + word + url2);
-
-        return response.body().string();
+//        String url = "http://106.14.226.237:8080/service/iss-test?platform=&screen=&text=";
+//        String url2 = "&appkey=3dcddlnx7ddlb2xatjxtbtxha6xah7iogajzkqie&scenario=child&filterName=search&ver=3.0&udid=d1cee3ae6ff46&returnType=json&appsig=A6702357B7904B43907E7803665FBD5FE08C57A5&appver=1.0.1&city=%E6%B7%B1%E5%9C%B3&history=&time=&voiceid=8AAAD808EDF04697AF3C74C22DC4CF0E&gps=&method=iss.getTalk&dpi=&viewId=";
+//
+//        Response response = HttpUtils.getInstance().getSync(url + word + url2);
+//
+//        return response.body().string();
+        return "";
     }
 
     public static String byNewApi(String word) throws IOException {
@@ -153,18 +154,18 @@ public class PhicommUtils {
                 }
             }
             if (need) {
-                JSONObject data = resJson.getJSONObject("data");
-
-                // audioUrl 为用户语音跟踪信息，可以判断是否为最终结果
-                String audioUrl = resJson.getString("audioUrl");
-                if (data == null && audioUrl!=null) {
-                    try {
-                        rawAsr = byNewApiRaw(asrWord);
-                        Log.d("PPP", "new hook api asr data: " + rawAsr);
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                }
+//                JSONObject data = resJson.getJSONObject("data");
+//
+//                // audioUrl 为用户语音跟踪信息，可以判断是否为最终结果
+//                String audioUrl = resJson.getString("audioUrl");
+//                if (data == null && audioUrl!=null) {
+//                    try {
+//                        rawAsr = byNewApiRaw(asrWord);
+//                        Log.d("PPP", "new hook api asr data: " + rawAsr);
+//                    } catch (IOException ioException) {
+//                        ioException.printStackTrace();
+//                    }
+//                }
             }
 
         }
