@@ -8,7 +8,6 @@ package com.unisound.vui.util;
 import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.Keep;
-import com.baidu.mobstat.Build;
 import com.phicomm.speaker.device.BuildConfig;
 import com.phicomm.speaker.device.utils.Setting;
 
