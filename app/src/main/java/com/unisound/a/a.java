@@ -5,9 +5,9 @@ import android.net.*;
 import android.text.*;
 import android.util.Base64;
 import com.phicomm.speaker.device.BuildConfig;
-import com.phicomm.speaker.device.ExampleApp;
+import com.phicomm.speaker.device.Pandora;
 import org.json.*;
-import android.provider.*;
+
 import android.net.wifi.*;
 import android.content.*;
 
@@ -225,7 +225,7 @@ public class a
             if (w != null) {
                 com.unisound.a.a.v = w.getNetworkInfo(0);
             }
-            com.unisound.a.a.s = ExampleApp.PROCESS_NAME;
+            com.unisound.a.a.s = Pandora.PROCESS_NAME;
             com.unisound.a.a.r = c(b);
             com.unisound.a.a.q = b(b);
             com.unisound.a.a.t = Build.MODEL;
@@ -678,7 +678,7 @@ public class a
         final String s = "";
         String packageName;
         try {
-            packageName = ExampleApp.PROCESS_NAME;
+            packageName = Pandora.PROCESS_NAME;
         }
         catch (Exception ex) {
             ex.printStackTrace();

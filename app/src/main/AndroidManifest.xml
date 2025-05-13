@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <supports-screens android:anyDensity="true" android:smallScreens="true" android:normalScreens="false" android:largeScreens="true" android:resizeable="true"/>
     <meta-data android:name="android.support.VERSION" android:value="25.3.1"/>
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.phicomm.speaker.device.ExampleApp" android:hardwareAccelerated="true" android:largeHeap="true" android:supportsRtl="true">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.phicomm.speaker.device.Pandora" android:hardwareAccelerated="true" android:largeHeap="true" android:supportsRtl="true">
         <meta-data android:name="BUGLY_APP_CHANNEL" android:value="phicomm"/>
         <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="ptXkbCCWjmzeSrQ0NuGeIjSB4twnHDL8"/>
         <service android:name="com.phicomm.speaker.device.ui.service.WindowsService">
@@ -44,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.phicomm.speaker.device.ui.MainTestActivity" android:stateNotNeeded="true" android:screenOrientation="landscape"/>
         <receiver android:name="com.phicomm.speaker.device.Receiver.MessageReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

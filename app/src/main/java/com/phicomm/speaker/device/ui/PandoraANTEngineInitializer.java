@@ -41,7 +41,7 @@ import com.unisound.vui.handler.session.stock.DefaultStockHandler;
 import com.unisound.vui.handler.session.weather.DefaultWeatherHandler;
 import nluparser.MixtureProcessor;
 
-public final class ExampleANTEngineInitializer extends ANTEngineInitializer {
+public final class PandoraANTEngineInitializer extends ANTEngineInitializer {
     /* access modifiers changed from: protected */
     @Override // com.unisound.vui.engine.ANTEngineInitializer
     public void onEngineInitDone(ANTEngine engine) {

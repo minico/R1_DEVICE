@@ -3,9 +3,9 @@ package com.unisound.common;
 import java.text.*;
 import cn.yunzhisheng.asr.*;
 import android.content.*;
-import com.phicomm.speaker.device.ExampleApp;
+import com.phicomm.speaker.device.Pandora;
 import org.json.*;
-import com.unisound.c.*;
+
 import android.util.*;
 import java.util.*;
 import java.io.*;
@@ -109,7 +109,7 @@ public class y
             jsonObject.put("imei", (Object)s2);
             jsonObject.put("sessionID", (Object)s3);
             jsonObject.put("timeStamp", (Object)b(n2));
-            jsonObject.put("packageName", ExampleApp.PROCESS_NAME);
+            jsonObject.put("packageName", Pandora.PROCESS_NAME);
             jsonObject.put("status", n);
             jsonObject.put("errString", (Object)s4);
             jsonObject.put("javaSDKLog", (Object)s5);

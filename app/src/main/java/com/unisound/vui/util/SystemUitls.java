@@ -10,8 +10,8 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import cn.yunzhisheng.common.PinyinConverter;
-import com.phicomm.speaker.device.BuildConfig;
-import com.phicomm.speaker.device.ExampleApp;
+
+import com.phicomm.speaker.device.Pandora;
 import com.unisound.vui.handler.session.memo.utils.MemoConstants;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,7 +23,7 @@ import java.util.List;
 public class SystemUitls {
     public static String getAppVersion(Context context) {
         String str = "";
-        str = ExampleApp.VERSION_NAME;
+        str = Pandora.VERSION_NAME;
         LogMgr.i("===>>getVersionCode and code:" + str);
         return str;
     }
@@ -130,7 +130,7 @@ public class SystemUitls {
     }
 
     public static int getVersionCode(Context context) {
-        int i =ExampleApp.VERSION_CODE;
+        int i = Pandora.VERSION_CODE;
 
         LogMgr.i("===>>getVersionCode and code:" + i);
         return i;

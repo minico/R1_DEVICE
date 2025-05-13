@@ -12,8 +12,8 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.phicomm.speaker.device.BuildConfig;
-import com.phicomm.speaker.device.ExampleApp;
+
+import com.phicomm.speaker.device.Pandora;
 import org.apache.commons.io.FileUtils;
 
 public class DeviceTool {
@@ -25,7 +25,7 @@ public class DeviceTool {
 
     public static String getAppPackageName(Context context) {
         try {
-            return ExampleApp.PROCESS_NAME;
+            return Pandora.PROCESS_NAME;
         } catch (Exception e) {
             e.printStackTrace();
             return "";
@@ -34,7 +34,7 @@ public class DeviceTool {
 
     public static String getAppVersionName(Context context) {
         try {
-            return ExampleApp.VERSION_NAME;
+            return Pandora.VERSION_NAME;
         } catch (Exception e) {
             e.printStackTrace();
             return "";

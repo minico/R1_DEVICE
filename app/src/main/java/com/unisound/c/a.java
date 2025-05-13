@@ -31,7 +31,7 @@ import java.security.MessageDigest;
 import java.util.UUID;
 
 import com.phicomm.speaker.device.BuildConfig;
-import com.phicomm.speaker.device.ExampleApp;
+import com.phicomm.speaker.device.Pandora;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -209,7 +209,7 @@ public class a {
                 v = w.getNetworkInfo(0);
             }
 
-            s = ExampleApp.PROCESS_NAME;
+            s = Pandora.PROCESS_NAME;
             r = c(var0);
             q = b(var0);
             t = Build.MODEL;
@@ -635,7 +635,7 @@ public class a {
     public static String f(Context var0) {
         String var3;
         try {
-            var3 = ExampleApp.VERSION_NAME;
+            var3 = Pandora.VERSION_NAME;
         } catch (Exception var2) {
             var2.printStackTrace();
             var3 = "";
@@ -664,7 +664,7 @@ public class a {
     public static String g(Context var0) {
         String var3;
         try {
-            var3 = ExampleApp.PROCESS_NAME;
+            var3 = Pandora.PROCESS_NAME;
         } catch (Exception var2) {
             var2.printStackTrace();
             var3 = "";

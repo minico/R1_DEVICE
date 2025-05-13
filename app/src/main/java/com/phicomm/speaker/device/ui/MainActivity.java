@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogMgr.d(TAG, "onCreate");
-        setContentView(R.layout.layout_welcome);
+        setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
     }

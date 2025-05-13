@@ -2,8 +2,8 @@ package com.unisound.vui.util;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import com.phicomm.speaker.device.BuildConfig;
-import com.phicomm.speaker.device.ExampleApp;
+
+import com.phicomm.speaker.device.Pandora;
 
 public class PackageInfoUtil {
     private PackageInfoUtil() {
@@ -19,11 +19,11 @@ public class PackageInfoUtil {
     }
 
     public static int getVersionCode(Context context) {
-        return ExampleApp.VERSION_CODE;
+        return Pandora.VERSION_CODE;
     }
 
     public static String getVersionName(Context context) {
-        return ExampleApp.VERSION_NAME;
+        return Pandora.VERSION_NAME;
     }
 
     public static boolean isZhSystem(Context context) {

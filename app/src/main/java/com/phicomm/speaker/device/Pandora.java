@@ -22,18 +22,18 @@ import org.litepal.LitePalApplication;
 
 import java.io.File;
 
-public class ExampleApp extends MultiDexApplication {
+public class Pandora extends MultiDexApplication {
     public static  String PROCESS_NAME = "com.phicomm.speaker.device";
     public static  String VERSION_NAME = "1.2.1";
     public static  int VERSION_CODE = 11;
-    private static final String TAG = "ExampleApp";
+    private static final String TAG = "Pandora";
 
     private String getMyProcessName(Context context) {
         int pid = Process.myPid();
         for (ActivityManager.RunningAppProcessInfo appProcess : ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getRunningAppProcesses()) {
             if (appProcess.pid == pid) {
 //                return appProcess.processName;
-                return ExampleApp.PROCESS_NAME;
+                return Pandora.PROCESS_NAME;
             }
         }
         return "";

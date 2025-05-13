@@ -2,7 +2,7 @@ package com.phicomm.speaker.device.ui.service;
 
 import android.app.Application;
 import android.os.Binder;
-import com.phicomm.speaker.device.ui.ExampleANTEngineInitializer;
+import com.phicomm.speaker.device.ui.PandoraANTEngineInitializer;
 import com.unisound.vui.auth.BasicCredentials;
 import com.unisound.vui.auth.UNIOSCredentials;
 import com.unisound.vui.bootstrap.ANTEFactory;
@@ -60,7 +60,7 @@ public class ANTServiceBinder extends Binder {
 
             public void call(Subscriber<? super NativeBootstrap> subscriber) {
                 NativeBootstrap bootstrap = new NativeBootstrap();
-                bootstrap.options(new DefaultUserANTEOptionProvider()).antEngineFactory(ANTServiceBinder.this.antEngineANTEFactory).androidContext(application).wakeupWord(UserPerferenceUtil.getWakeupWord(application, ANTConfigPreference.isWakeupTest)).mainTag(ExoAsrTag.getMainTag(ExoAsrTag.TAG_UNIDRIVE_MAIN)).mainVocab(new DefaultANTEMainVocabProvider().getMainVocab(application)).initializationHandler(new ExampleANTEngineInitializer());
+                bootstrap.options(new DefaultUserANTEOptionProvider()).antEngineFactory(ANTServiceBinder.this.antEngineANTEFactory).androidContext(application).wakeupWord(UserPerferenceUtil.getWakeupWord(application, ANTConfigPreference.isWakeupTest)).mainTag(ExoAsrTag.getMainTag(ExoAsrTag.TAG_UNIDRIVE_MAIN)).mainVocab(new DefaultANTEMainVocabProvider().getMainVocab(application)).initializationHandler(new PandoraANTEngineInitializer());
                 subscriber.onNext(bootstrap);
             }
         }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<NativeBootstrap>() {
