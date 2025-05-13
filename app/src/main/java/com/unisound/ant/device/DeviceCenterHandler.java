@@ -21,19 +21,13 @@ import com.unisound.ant.device.mqtt.bean.ChannelParams;
 import com.unisound.ant.device.mqtt.bean.LconInfo;
 import com.unisound.ant.device.mqtt.bean.LconRequest;
 import com.unisound.ant.device.mqtt.bean.ParamConfig;
-import com.unisound.ant.device.netmodule.HttpReportUtils;
 import com.unisound.ant.device.netmodule.NetChangeReceiver;
-import com.unisound.ant.device.receiver.AutoLocationReceiver;
 import com.unisound.ant.device.receiver.InstallBroadcastReceiver;
 import com.unisound.ant.device.service.ActionResponse;
-import com.unisound.ant.device.service.BaseRequest;
-import com.unisound.ant.device.service.ServiceProtocolUtil;
 import com.unisound.ant.device.sessionlayer.BaseSessionLayer;
 import com.unisound.ant.device.sessionlayer.DialogProfile;
 import com.unisound.ant.device.sessionlayer.SessionUpdateCallBack;
 import com.unisound.vui.common.config.ANTConfigPreference;
-import com.unisound.vui.common.location.bean.LocationInfo;
-import com.unisound.vui.common.location.listener.LocationListener;
 import com.unisound.vui.common.media.UniMediaPlayer;
 import com.unisound.vui.engine.ANTEngine;
 import com.unisound.vui.engine.ANTEngineConfig;
@@ -61,12 +55,11 @@ import nluparser.scheme.NLU;
 import nluparser.scheme.Result;
 import org.json.JSONObject;
 
-public class DeviceCenterHandler extends SimpleUserEventInboundHandler implements ChannelListener, SessionUpdateCallBack, NetChangeReceiver.NetStateListener, VoiceConnectStateListener, LocationListener, MusicStatusListener, InstallBroadcastReceiver.InstallStateListener {
+public class DeviceCenterHandler extends SimpleUserEventInboundHandler implements ChannelListener, SessionUpdateCallBack, NetChangeReceiver.NetStateListener, VoiceConnectStateListener, MusicStatusListener, InstallBroadcastReceiver.InstallStateListener {
     private static final String TAG = "DeviceCenterHandler";
     private static ButtonControl buttonControlMusic;
     private static DeviceCenterHandler deviceCenterMgr;
     private AliveTransportChannel aliveTransportChannel;
-    private AutoLocationReceiver autoLocationReceiver;
     private ANTHandlerContext ctx;
     private int delayTime = 0;
     private DeviceStateMgr deviceStateMgr;
@@ -74,7 +67,6 @@ public class DeviceCenterHandler extends SimpleUserEventInboundHandler implement
     private InstallBroadcastReceiver installBroadcastReceiver;
     private boolean isInSceneControl;
     private Context mContext;
-    private LocationInfo mLocationInfo;
     private int mMusicStatus = -1;
     private String mUdid;
     private MixtureProcessor mixtureProcessor;
@@ -101,8 +93,6 @@ public class DeviceCenterHandler extends SimpleUserEventInboundHandler implement
         this.installBroadcastReceiver.registerInstallStateReceiver(context);
         this.sessionLayer = new BaseSessionLayer(context, this);
         this.deviceStateMgr = new DeviceStateMgr(context);
-        this.autoLocationReceiver = new AutoLocationReceiver(context, this);
-        this.autoLocationReceiver.startLocation();
     }
 
     public static void init(Context context, OnMQTTStatusChangeListener onMQTTStatusChangeListener) {
@@ -240,10 +230,7 @@ public class DeviceCenterHandler extends SimpleUserEventInboundHandler implement
         this.mUdid = (String) ctx2.engine().config().getOption(ANTEngineOption.GENERAL_UDID);
         LogMgr.d(TAG, "engine init done, udid is " + this.mUdid);
         AppGlobalConstant.setUdid(this.mUdid);
-        if (this.mLocationInfo != null) {
-            updateLocation(this.mLocationInfo);
-            this.mLocationInfo = null;
-        }
+        updateLocation();
         initHardware(ctx2);
         return super.onASREventEngineInitDone(ctx2);
     }
@@ -484,28 +471,8 @@ public class DeviceCenterHandler extends SimpleUserEventInboundHandler implement
         this.ctx.enterWakeup(false);
     }
 
-    @Override // com.unisound.vui.common.location.listener.LocationListener
-    public void onLocationSuccess(LocationInfo locationInfo) {
-        LogMgr.d(TAG, "onLocationChange info:" + locationInfo);
-        if (this.ctx != null) {
-            LogMgr.d(TAG, "ctx != null, update location info");
-            updateLocation(locationInfo);
-            this.autoLocationReceiver.onDestory();
-            this.mLocationInfo = null;
-            return;
-        }
-        LogMgr.e(TAG, "onLocationChange ANTEngineConfig ctx is null");
-        this.mLocationInfo = locationInfo;
-    }
-
-    private void updateLocation(LocationInfo info) {
+    private void updateLocation() {
         ANTEngineConfig config = this.ctx.engine().config();
-        config.setOption(ANTEngineOption.GENERAL_GPS, info.getLatitude() + "," + info.getLongitude());
-        config.setOption(ANTEngineOption.GENERAL_CITY, info.getCity());
-    }
-
-    @Override // com.unisound.vui.common.location.listener.LocationListener
-    public void onLocationFail(String locationErrorMessage) {
-        LogMgr.d(TAG, "onLocationFail : " + locationErrorMessage);
+        config.setOption(ANTEngineOption.GENERAL_CITY, "北京");
     }
 }

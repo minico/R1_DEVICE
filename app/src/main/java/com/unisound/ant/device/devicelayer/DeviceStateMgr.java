@@ -18,7 +18,6 @@ import com.unisound.ant.device.service.ActionResponse;
 import com.unisound.ant.device.service.DeviceCommandFactory;
 import com.unisound.ant.device.sessionlayer.SessionExecuteHandler;
 import com.unisound.ant.device.sessionlayer.SessionRegister;
-import com.unisound.vui.common.location.bean.LocationInfo;
 import com.unisound.vui.common.media.IMediaPlayerStateListener;
 import com.unisound.vui.engine.ANTEngineOption;
 import com.unisound.vui.engine.ANTHandlerContext;
@@ -214,20 +213,7 @@ public class DeviceStateMgr extends SessionExecuteHandler implements IMediaPlaye
     }
 
     public void reportDeviceLocationInfo() {
-        String locationInfo = UserPerferenceUtil.getLocationInfo(this.context);
-        if (!TextUtils.isEmpty(locationInfo)) {
-            LogMgr.d(TAG, "get userLocationInfo :" + locationInfo);
-            LocationInfo info = (LocationInfo) JsonTool.fromJson(locationInfo, LocationInfo.class);
-            GpsInfo gpsInfo = new GpsInfo();
-            gpsInfo.setCountry(info.getmCountry());
-            gpsInfo.setProvince(info.getProvince());
-            gpsInfo.setCity(info.getCity());
-            gpsInfo.setRegion(info.getDistrict());
-            gpsInfo.setAddress(info.getAddress());
-            gpsInfo.setLat(info.getLatitude());
-            gpsInfo.setLon(info.getLongitude());
-            reportDeviceParametersInfo(false, DstServiceState.SERVICE_STATE_SETTING_OVER, DeviceCommandFactory.buildCommand("deviceManagement", CommandOperate.COMMAND_OPERATE_UPDATE_LOCATION, gpsInfo));
-        }
+
     }
 
     private void reportHardwareParameters() {
