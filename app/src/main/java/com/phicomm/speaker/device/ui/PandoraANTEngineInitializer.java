@@ -22,7 +22,6 @@ import com.phicomm.speaker.device.custom.ringing.RingingEventProcessor;
 import com.phicomm.speaker.device.custom.setting.PhicommSettingHandler;
 import com.unisound.ant.device.DeviceCenterHandler;
 import com.unisound.ant.platform.illeagechat.DefaultIlleageChatHandler;
-import com.unisound.ant.platform.smarthome.DefaultSmartHomeHandler;
 import com.unisound.vui.engine.ANTEngine;
 import com.unisound.vui.engine.ANTEngineInitializer;
 import com.unisound.vui.engine.ANTEngineOption;
@@ -76,7 +75,6 @@ public final class PandoraANTEngineInitializer extends ANTEngineInitializer {
         pipeline.addLast(new DefaultChatHandler());
         pipeline.addLast(new DefaultGuideHandler());
         pipeline.addLast(new DefaultIlleageChatHandler());
-        pipeline.addLast(new DefaultSmartHomeHandler());
         pipeline.addLast(new DefaultUnSupportHandler(context));
         pipeline.addLast(new PhicommInitializeHandler());
         pipeline.addLast(new PhicommStatusHandler());
