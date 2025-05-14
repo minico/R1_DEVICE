@@ -35,8 +35,8 @@ public class ANTServiceBinder extends Binder {
         return this.engineInited;
     }
 
-    public ANTServiceBinder(Application application, ANTAudioSourceImpl antAudioSource) {
-        this.antEngineANTEFactory = new NativeANTEFactory(new BasicCredentials(ExoConstants.APP_KEY, ExoConstants.APP_SECRET), application, antAudioSource);
+    public ANTServiceBinder(Application application) {
+        this.antEngineANTEFactory = new NativeANTEFactory(new BasicCredentials(ExoConstants.APP_KEY, ExoConstants.APP_SECRET), application);
         this.antEngine = this.antEngineANTEFactory.newANTEngine();
         initMode(application);
     }
@@ -77,13 +77,11 @@ public class ANTServiceBinder extends Binder {
     private static final class NativeANTEFactory implements ANTEFactory<ANTEngine> {
         private final ANTEngine antEngine;
 
-        public NativeANTEFactory(UNIOSCredentials credentials, Application app, ANTAudioSourceImpl audioSource) {
-            LogMgr.d(ANTServiceBinder.TAG, "NativeANTEFactory");
-            if (audioSource == null) {
-                UserPerferenceUtil.setAecEnable(app, ANTConfigPreference.aecEnable);
-                UserPerferenceUtil.setOneshotEnable(app, ANTConfigPreference.oneshotEnable);
-            }
-            this.antEngine = new NativeANTEngine(new DefaultANTBuilder.Provider(app, credentials), audioSource);
+        public NativeANTEFactory(UNIOSCredentials credentials, Application app) {
+            LogMgr.d(ANTServiceBinder.TAG, "NativeANTEFactory, aecEnable:" + ANTConfigPreference.aecEnable + ", oneshotEnable:" + ANTConfigPreference.oneshotEnable);
+            UserPerferenceUtil.setAecEnable(app, ANTConfigPreference.aecEnable);
+            UserPerferenceUtil.setOneshotEnable(app, ANTConfigPreference.oneshotEnable);
+            this.antEngine = new NativeANTEngine(new DefaultANTBuilder.Provider(app, credentials));
         }
 
         @Override // com.unisound.vui.bootstrap.ANTEFactory

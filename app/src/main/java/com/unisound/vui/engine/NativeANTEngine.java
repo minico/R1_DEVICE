@@ -288,7 +288,7 @@ public class NativeANTEngine extends AbstractANTEngine {
         }
     }
 
-    public NativeANTEngine(com.unisound.vui.engine.a.AbstractC0007a aVar, IAudioSource audioSource) {
+    public NativeANTEngine(com.unisound.vui.engine.a.AbstractC0007a aVar) {
         LogMgr.d("NativeANTEngine", "NativeANTEngine");
         a();
         this.h = new com.unisound.vui.engine.b(this);

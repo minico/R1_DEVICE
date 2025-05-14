@@ -39,7 +39,7 @@ public class WindowsService extends Service implements TransferHandlerWithGui {
         ANTConfigPreference.init(getApplicationContext());
         showNotificationForAliveBackground();
         if (antServiceBinder == null) {
-            antServiceBinder = new ANTServiceBinder(getApplication(), null);
+            antServiceBinder = new ANTServiceBinder(getApplication());
         }
     }
 
