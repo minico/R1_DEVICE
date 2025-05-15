@@ -4,7 +4,6 @@ import android.content.Context;
 import com.phicomm.speaker.device.custom.api.CustomApiManager;
 import com.phicomm.speaker.device.custom.handler.PhicommAlarmHandler;
 import com.phicomm.speaker.device.custom.handler.PhicommBindStatusHandler;
-import com.phicomm.speaker.device.custom.handler.PhicommDataStatisticHandler;
 import com.phicomm.speaker.device.custom.handler.PhicommExternalMusicHandler;
 import com.phicomm.speaker.device.custom.handler.PhicommInitializeHandler;
 import com.phicomm.speaker.device.custom.handler.PhicommInterceptHandler;
@@ -49,7 +48,6 @@ public final class PandoraANTEngineInitializer extends ANTEngineInitializer {
         MixtureProcessor mixtureProcessor = new MixtureProcessor.Builder().build();
         DeviceCenterHandler deviceCenterMgr = DeviceCenterHandler.getDeviceCenterMgr();
         pipeline.addLast(new NLUDispatcher(mixtureProcessor));
-        pipeline.addLast(new PhicommDataStatisticHandler(context, mixtureProcessor));
         pipeline.addLast(new PhicommReminderHandler(context));
         pipeline.addLast(new PhicommAlarmHandler(context));
         DefaultMemoRingingHandler ringingHandler = new DefaultMemoRingingHandler();
