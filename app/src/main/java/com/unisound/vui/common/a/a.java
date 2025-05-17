@@ -27,10 +27,10 @@ public class a implements Runnable {
             InputStream open = this.f364a.getAssets().open(this.b.a());
             byte[] byteArray = IOUtils.toByteArray(open);
             this.b.a(byteArray);
-            File file = new File(FileHelper.getWakeupPcmDirectory(), this.b.a());
-            if (!file.exists()) {
-                FileUtils.writeByteArrayToFile(file, byteArray);
-            }
+//            File file = new File(FileHelper.getWakeupPcmDirectory(), this.b.a());
+//            if (!file.exists()) {
+//                FileUtils.writeByteArrayToFile(file, byteArray);
+//            }
             if (open != null) {
                 try {
                     open.close();
