@@ -82,6 +82,9 @@ public class DefaultChatHandler extends SimpleUserEventInboundHandler<NLU> imple
                         }
                     }, 800);
                     playContent = ctx.androidContext().getString(R.string.tts_chat_play_positive);
+                } if ("chat".equals(style) && !TextUtils.isEmpty(url)) {
+                    playAudioResource(url);
+                    playContent = "";
                 } else if ("translation".equals(style) && !TextUtils.isEmpty(audio)) {
                     playResource(audio);
                     ctx.enterWakeup(false);
